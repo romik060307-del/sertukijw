@@ -1,0 +1,23 @@
+OHLI SOCIAL v3.6.0 — PERBAIKAN SWIPE UNTUK MEMBALAS CHAT
+
+Perbaikan utama
+1. Memperbaiki penyebab swipe-to-reply tidak bekerja: event memanggil setReplyTarget(), tetapi fungsi itu tidak terdefinisi.
+2. Menambahkan setReplyTarget() dan clearReply() yang mengelola state balasan, menampilkan bar kutipan, mengubah placeholder input, dan menyediakan tombol batal.
+3. Swipe kiri-ke-kanan (ambang 54 px) memilih objek pesan langsung dari row.__message agar kutipan tidak salah pesan karena urutan array/DOM.
+4. Pesan balasan menyertakan kutipan ringkas dan kutipan ditampilkan di bubble penerima.
+5. Tombol Balas dari menu pesan menggunakan alur yang sama.
+6. Balasan otomatis dibersihkan saat berpindah percakapan; kegagalan pengiriman mempertahankan draft balasan.
+7. Long-press tetap membuka menu aksi; scroll vertikal tetap natural.
+
+File utama yang diubah
+- app/src/main/assets/index.html — state balasan, composer, render kutipan, gesture swipe, CSS bar kutipan.
+- app/build.gradle — versionCode 27, versionName 3.6.0.
+- app/src/main/java/com/rk/server/ServerService.java — versi health endpoint 3.6.0.
+- .github/workflows/build-apk.yml — memprioritaskan ZIP v3.6.0.
+- tools/source-verify.mjs — 5 pemeriksaan tambahan untuk fungsi balas dan gesture.
+- README.md — dokumentasi versi dan batas pengujian.
+
+Hasil verifikasi
+- 93 pemeriksaan statis lulus.
+- JavaScript inline HTML berhasil diparse.
+- APK belum dibangun dan gesture belum diuji pada perangkat Android/iOS nyata.
